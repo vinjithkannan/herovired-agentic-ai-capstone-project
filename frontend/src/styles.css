@@ -32,3 +32,122 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1020;border-radius
 .notice.success { background: #ecfdf3; color: #027a48; }
 .notice.error { background: #fef3f2; color: #b42318; }
 @media (max-width: 760px) { .workspace { grid-template-columns: 1fr; } .search-panel { grid-column: auto; } .doc-row { flex-direction: column; } }
+
+.backlog-panel { grid-column: 1 / -1; }
+.epic-card { border: 1px solid #e4e7ec; border-radius: 12px; padding: 16px; margin: 16px 0; background: #fcfcfd; }
+.epic-card h3 { margin: 8px 0; color: #182230; }
+.epic-card > p { color: #475467; font-size: 13px; }
+.story-card { padding: 16px 8px; }
+.story-card h4 { margin: 8px 0; color: #182230; }
+.criteria { margin: 12px 0; padding: 12px; border-radius: 8px; background: #f2f4f7; color: #344054; font-size: 13px; }
+.criteria p { overflow-wrap: anywhere; }
+.backlog-panel small { color: #667085; }
+
+/* Phase 7 UX: a single live workflow summary, backed by the loaded artifacts. */
+.workflow-overview{margin:26px 0 12px}
+.workflow-overview-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin:0 0 17px}
+.workflow-overview-heading h2{font-size:25px;margin:8px 0;color:#f5f7ff;letter-spacing:-.02em}
+.workflow-overview-heading p:not(.eyebrow){color:#9eabc0;font-size:14px;margin:7px 0 0}
+.workflow-project{border:1px solid #36435e;color:#d0d7eb;border-radius:999px;padding:9px 14px;font-size:12px;max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.workflow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.workflow-card{display:flex;flex-direction:column;min-width:0;border:1px solid #293955;background:#111a2d;border-radius:17px;padding:23px;min-height:280px}
+.workflow-card-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.workflow-status{font-size:11px;color:#d8bd84;background:#40301c;border-radius:999px;padding:5px 9px}
+.workflow-status.is-loaded{color:#9be5ca;background:#163c36}
+.workflow-card h3{font-size:20px;margin:15px 0 6px;color:#f4f6ff}
+.workflow-summary{font-size:13px;color:#b8c5dd;margin:0 0 12px}
+.workflow-preview{list-style:none;margin:3px 0 18px;padding:0;flex:1;display:grid;align-content:start;gap:8px}
+.workflow-preview li{font-size:12px;line-height:1.45;color:#cbd5e1;border-left:2px solid #8b5cf6;padding:2px 0 2px 10px;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.workflow-empty{color:#8290a8;flex:1;font-size:12px}
+.workflow-link{font-size:13px;font-weight:650;color:#d4c3ff;text-decoration:none;align-self:flex-start;padding:6px 0}
+.workflow-link:hover{text-decoration:underline;color:#fff}
+#requirements-analysis,#story-generation,#delivery-orchestration{scroll-margin-top:24px}
+
+/* Auth layout deliberately isolated from light workspace panels and dark dashboard. */
+.auth-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:clamp(20px,5vw,60px);background:radial-gradient(ellipse at 18% 12%,#20244e 0%,transparent 45%),#0b1020}
+.auth-card{width:100%;max-width:440px;background:#fff;color:#152238;border-radius:20px;padding:clamp(26px,4vw,42px);box-shadow:0 28px 90px #0006;border:1px solid #e5e7eb}
+.auth-brand{display:flex;gap:12px;align-items:center;margin-bottom:32px}
+.auth-brand .brand-mark{flex-shrink:0}
+.auth-brand strong{display:block;font-size:17px;letter-spacing:-.02em}
+.auth-brand small{display:block;font-size:12px;color:#667085;margin-top:4px}
+.auth-card h1{font-size:32px;line-height:1.15;letter-spacing:-.035em;margin:11px 0 12px;color:#152238}
+.auth-description{font-size:14px;line-height:1.65;color:#667085;margin:0 0 25px}
+.auth-form{display:grid;gap:9px}
+.auth-form label{font-size:13px;font-weight:650;margin-top:9px;color:#344054}
+.auth-form input{width:100%;min-width:0;font:inherit;font-size:15px;color:#152238;background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:13px 14px;outline:none}
+.auth-form input:focus{border-color:#6954c7;box-shadow:0 0 0 3px #8b5cf624}
+.auth-form button{margin-top:19px;width:100%;border:0;border-radius:10px;background:#293b76;color:#fff;padding:14px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.auth-form button:hover{background:#354b90}
+.auth-error{background:#fef3f2;border:1px solid #fecdca;color:#b42318;padding:12px;border-radius:9px;font-size:13px}
+.auth-footnote{font-size:12px;color:#667085;margin:26px 0 0;text-align:center;line-height:1.5}
+@media(max-width:760px){.workflow-grid{grid-template-columns:1fr}.workflow-overview-heading{align-items:flex-start;flex-direction:column}.workflow-project{max-width:100%}}
+
+.panel{color:#182230}
+.panel .eyebrow{color:#6941c6}
+.workflow-expanded{border-top:1px solid #34415b;margin:4px 0 12px;padding-top:11px;color:#c7d3e8}
+.workflow-expanded summary{cursor:pointer;color:#d4c3ff;font-weight:650;font-size:12px}
+.workflow-expanded strong{color:#f5f6ff}
+.workflow-expanded ul{list-style:disc;margin:9px 0 12px;padding-left:19px;max-height:290px;overflow-y:auto}
+.workflow-expanded li{font-size:12px;line-height:1.55;margin-bottom:8px;overflow-wrap:anywhere}
+
+
+/* Phase 7 visual polish — source-backed workspace, no business-logic changes. */
+:root{--rf-accent:#7152df;--rf-ink:#14213d;--rf-border:#e4e8f1;--rf-muted:#64748b}
+.shell{max-width:1280px;padding:32px clamp(18px,3vw,42px) 52px}
+.workspace{gap:22px;align-items:stretch;margin:34px 0 28px}
+.workspace > .panel{
+  min-width:0;overflow:hidden;position:relative;border:1px solid var(--rf-border);
+  border-radius:20px;padding:clamp(22px,2.7vw,32px);
+  background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);
+  box-shadow:0 12px 35px rgba(14,24,51,.075),0 2px 5px rgba(14,24,51,.025);
+}
+.workspace > .panel:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#7358ed,#a6b5ff);opacity:.95}
+.workspace > .panel > .eyebrow{font-size:11px;letter-spacing:.16em;color:#7051db;font-weight:800;margin:6px 0 12px}
+.workspace > .panel > h2{font-size:clamp(21px,2.3vw,26px);letter-spacing:-.035em;line-height:1.2;color:var(--rf-ink);margin:0 0 13px;font-weight:780}
+.panel-description,.workspace > .panel > p:not(.eyebrow){font-size:13px;line-height:1.6;color:var(--rf-muted);margin:0 0 19px}
+.workspace > .project-panel,.workspace > .ingestion-panel{display:flex;flex-direction:column;min-height:380px}
+.workspace > .project-panel .project-select{margin-top:auto;padding-top:18px;border-top:1px solid #e9edf5}
+.workspace > .ingestion-panel .doc-list{margin-top:auto;padding-top:18px;border-top:1px solid #e9edf5}
+.workspace > .panel label{color:#34445e;font-weight:650;line-height:1.4}
+.workspace > .panel input:not([type=file]),.workspace > .panel select,.workspace > .panel textarea{
+  border:1px solid #d6deea;border-radius:11px;padding:12px 14px;font-size:14px;
+  box-shadow:0 1px 2px rgba(15,23,42,.025);transition:border-color .16s,box-shadow .16s;
+}
+.workspace > .panel textarea{min-height:112px;line-height:1.5;resize:vertical}
+.workspace > .panel :is(input:not([type=file]),select,textarea):focus{
+  outline:none;border-color:#866ee5;box-shadow:0 0 0 4px rgba(113,82,223,.12)
+}
+.workspace > .panel button{min-height:41px;background:#2c407b;border-radius:10px;padding:11px 17px;
+  font-size:13px;letter-spacing:.005em;box-shadow:0 3px 8px rgba(44,64,123,.13);
+  transition:background .16s,transform .16s,box-shadow .16s
+}
+.workspace > .panel button:hover:not(:disabled){background:#384e91;transform:translateY(-1px);box-shadow:0 6px 13px rgba(44,64,123,.19)}
+.workspace > .panel button:focus-visible{outline:3px solid #ab9af3;outline-offset:3px}
+.workspace > .panel button:disabled{background:#9aa6c1;box-shadow:none;opacity:.8}
+.workspace > .project-panel > button{align-self:flex-start}
+.workspace > .ingestion-panel > button{align-self:flex-start}
+.workspace .file-input{padding:12px 12px;border:1px dashed #aebbe1;border-radius:12px;
+  background:#f8faff;color:#475569;line-height:1.4;font-size:13px;cursor:pointer;width:100%;margin:6px 0 15px}
+.workspace .file-input::file-selector-button{border:0;border-radius:8px;padding:9px 13px;margin-right:14px;
+  color:#344477;background:#e6ebfb;font:inherit;font-weight:700;cursor:pointer}
+.workspace .file-input:hover{border-color:#7d71d9;background:#f4f2ff}
+.doc-list{position:relative;color:#24334c}
+.doc-list > strong{font-size:13px;color:#263650}
+.doc-count{float:right;background:#eaf8f1;border-radius:999px;padding:4px 9px;color:#16704c;font-size:11px;font-weight:700;margin-top:-4px}
+.doc-row{align-items:center;gap:15px;padding:13px 0;line-height:1.5}
+.doc-row span{min-width:0;overflow-wrap:anywhere;font-weight:550;color:#293b56}
+.doc-row small{white-space:nowrap;flex-shrink:0;color:#576b85}
+/* Place the long, data-rich analysis in a dedicated wide row rather than a stranded half-card. */
+.workspace > .search-panel,.workspace > .analysis-panel,.workspace > .backlog-panel{grid-column:1 / -1}
+.workspace > .search-panel,.workspace > .analysis-panel{min-height:0}
+.workspace > .search-panel label{margin-top:18px}
+.workspace > .search-panel button{margin-top:3px}
+.workspace > .analysis-panel > button{margin-bottom:5px}
+.workspace .results{padding-top:19px;margin-top:20px;border-top:1px solid #e8edf4;color:#24334c}
+.workspace .result-card{border-top:1px solid #e9edf5;padding:15px 0}
+.workspace .result-card p{line-height:1.65}
+.workspace .result-meta{font-size:12px;line-height:1.6;color:#62748e}
+.workspace .epic-card{box-shadow:0 1px 5px rgba(20,33,61,.035);background:#fff;border-radius:14px}
+@media(min-width:1050px){.workspace{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.shell{padding:20px 16px 36px}.workspace{grid-template-columns:1fr;gap:16px}.workspace > .panel{padding:22px;border-radius:16px}.workspace > .project-panel,.workspace > .ingestion-panel{min-height:0}.workspace > .project-panel .project-select,.workspace > .ingestion-panel .doc-list{margin-top:20px}.doc-row{align-items:flex-start}.doc-row small{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.workspace > .panel button,.workspace > .panel :is(input,select,textarea){transition:none}.workspace > .panel button:hover:not(:disabled){transform:none}}

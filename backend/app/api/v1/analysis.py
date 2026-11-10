@@ -70,3 +70,14 @@ def list_analyses(project_id: UUID):
         cur.execute("SELECT id, status, question, model_name, created_at FROM analysis_runs WHERE project_id=%s ORDER BY created_at DESC LIMIT 20", (project_id,))
         rows = cur.fetchall()
     return [{"id": str(r[0]), "status": r[1], "question": r[2], "model": r[3], "created_at": r[4].isoformat()} for r in rows]
+
+
+@router.get("/{project_id}/analyses/{analysis_id}")
+def get_saved_analysis(project_id: UUID, analysis_id: UUID):
+    """Read the saved analysis snapshot; never rerun or mutate the LLM workflow."""
+    with get_connection() as conn, conn.cursor() as cur:
+        cur.execute("SELECT result FROM analysis_runs WHERE id=%s AND project_id=%s", (analysis_id, project_id))
+        row = cur.fetchone()
+    if row is None:
+        raise HTTPException(404, "Saved analysis not found for this project.")
+    return {**row[0], "analysis_id": str(analysis_id)}

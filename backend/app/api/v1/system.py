@@ -6,13 +6,13 @@ router = APIRouter()
 async def system_info():
     return {
         "application": "ReqFlow AI",
-        "phase": 3,
+        "phase": 6,
         "components": {
             "api": "ready",
             "database": "configured",
             "vector_store": "pgvector initialized by Docker",
             "agent_orchestrator": "LangGraph requirements analysis",
             "llm": "Ollama local inference",
-            "mcp": "planned for later phase"
+            "mcp": "Phase 6 trusted local mode only; disabled by default"
         }
     }

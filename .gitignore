@@ -18,3 +18,18 @@ coverage/
 *.log
 data/uploads/*
 !data/uploads/.gitkeep
+
+# Phase 7: private/local artifacts
+*.dump
+*.sql.gz
+*.bak
+*.backup
+*.sqlite3
+*.db
+.env.local
+.env.production
+*.pem
+*.key
+phase7-report-*.json
+reconcile_us001.py
+README_init.md

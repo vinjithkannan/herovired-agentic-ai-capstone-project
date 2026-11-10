@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS document_chunks (
   project_id UUID NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
   chunk_index INTEGER NOT NULL,
   content TEXT NOT NULL,
-  embedding vector(1536) NOT NULL,
+  embedding vector(768) NOT NULL,
   metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   UNIQUE(document_id, chunk_index)

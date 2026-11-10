@@ -1,0 +1,90 @@
+{
+  "recorded_at_utc": "2026-11-10T11:27:02.367494+00:00",
+  "audit": "reqflow-phase7-final-runtime-evidence-v1",
+  "source": "authenticated local API; no changes to PostgreSQL or external services",
+  "eligible_story_keys": [
+    "US-001",
+    "US-002",
+    "US-003",
+    "US-004"
+  ],
+  "story_count": 10,
+  "quality_cleared_count": 4,
+  "design": {
+    "approval_status": "approved",
+    "scope_story_keys": [
+      "US-001",
+      "US-002",
+      "US-003",
+      "US-004"
+    ],
+    "architecture_style": "Proposed modular web-application architecture; validate with technical lead",
+    "architecture_flow": [
+      "Client/UI",
+      "Authenticated API",
+      "Application services",
+      "Persistent database",
+      "Audit/observability"
+    ],
+    "component_names": [
+      "UI",
+      "API",
+      "Domain service",
+      "Persistence"
+    ],
+    "api_proposal_count": 4,
+    "api_operations": [
+      "GET /api/v1/attendance",
+      "GET /api/v1/attendance",
+      "GET /api/v1/attendance/reports",
+      "PATCH /api/v1/attendance/{record_id}"
+    ],
+    "proposed_entities": [
+      "AttendanceRecord",
+      "AttendanceCorrection",
+      "AccessGrant"
+    ],
+    "assumptions_count": 3,
+    "open_decisions_count": 3
+  },
+  "plan": {
+    "approval_status": "approved",
+    "scope_story_keys": [
+      "US-001",
+      "US-002",
+      "US-003",
+      "US-004"
+    ],
+    "task_count": 12,
+    "phase_counts": {
+      "design": 4,
+      "implementation": 4,
+      "testing": 4
+    },
+    "dependency_edge_count": 8,
+    "tasks_missing_numeric_estimate": 2,
+    "tasks_requiring_team_estimation": 2
+  },
+  "checks": {
+    "design_approved": true,
+    "plan_approved": true,
+    "eligible_story_scope_matches_design": true,
+    "eligible_story_scope_matches_plan": true,
+    "architecture_flow_present": true,
+    "components_present": true,
+    "proposed_apis_present": true,
+    "proposed_entities_present": true,
+    "assumptions_and_open_decisions_present": true,
+    "tasks_present": true,
+    "unique_task_identifiers": true,
+    "task_dependencies_resolve": true,
+    "task_estimation_metadata_present": true,
+    "tasks_only_reference_eligible_stories": true
+  },
+  "passed": true,
+  "limitations": [
+    "Approval status and schema-level completeness do not establish semantic design correctness.",
+    "API paths, entities and estimates are proposed artifacts requiring technical/team review.",
+    "This read-only audit does not exercise state-changing approval endpoints or live publishing."
+  ]
+}

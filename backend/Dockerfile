@@ -5,6 +5,8 @@ COPY backend/requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip && pip install -r /app/requirements.txt
 COPY backend /app/backend
 COPY agents /app/agents
+COPY integrations /app/integrations
+COPY mcp_servers /app/mcp_servers
 ENV PYTHONPATH=/app:/app/backend
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--app-dir", "/app/backend", "--host", "0.0.0.0", "--port", "8000"]

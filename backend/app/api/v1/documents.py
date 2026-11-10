@@ -50,8 +50,6 @@ async def upload_document(project_id: UUID, file: UploadFile = File(...)):
     extension = Path(file.filename or "").suffix.lower()
     if extension not in SUPPORTED_EXTENSIONS:
         raise HTTPException(415, "Supported formats: PDF, DOCX, Markdown and TXT.")
-    if not settings.openai_api_key:
-        raise HTTPException(503, "OPENAI_API_KEY is not configured. Add it to .env and restart the backend.")
     content = await file.read(MAX_FILE_BYTES + 1)
     if len(content) > MAX_FILE_BYTES:
         raise HTTPException(413, "Maximum upload size is 15 MB.")

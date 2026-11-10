@@ -20,8 +20,8 @@ def chat_json(prompt: str) -> dict:
         "keep_alive": "10m",
         "options": {
             "temperature": 0.1,
-            "num_ctx": 4096,
-            "num_predict": 1024
+            "num_ctx": 16384,
+            "num_predict": 4096,
         },
     }
 

@@ -1,0 +1,22 @@
+# Exclude developer files from backend build context
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+frontend/node_modules/
+frontend/dist/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.venv/
+**/.mypy_cache/
+**/.ruff_cache/
+data/uploads/*
+!data/uploads/.gitkeep
+*.log
+*.dump
+*.bak
+*.backup
+*.pem
+*.key

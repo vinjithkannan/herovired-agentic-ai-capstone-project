@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-reqflow}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-reqflow_dev_only_change_me}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/init:/docker-entrypoint-initdb.d:ro
@@ -23,7 +23,7 @@ services:
     container_name: reqflow-redis
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -37,7 +37,7 @@ services:
     environment:
       OLLAMA_TIMEOUT_SECONDS: ${OLLAMA_TIMEOUT_SECONDS:-300}
     ports:
-      - "11434:11434"
+      - "127.0.0.1:11434:11434"
     volumes:
       - ollama_data:/root/.ollama
 
@@ -56,10 +56,27 @@ services:
       OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:3b}
       OLLAMA_TIMEOUT_SECONDS: ${OLLAMA_TIMEOUT_SECONDS:-300}
       PYTHONPATH: /app:/app/backend
-    ports: ["8000:8000"]
+      PHASE5_ENABLE_LIVE_PUBLISH: ${PHASE5_ENABLE_LIVE_PUBLISH:-false}
+      PHASE5_PUBLISH_KEY: ${PHASE5_PUBLISH_KEY:-}
+      GITHUB_OWNER: ${GITHUB_OWNER:-}
+      GITHUB_REPOSITORY: ${GITHUB_REPOSITORY:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      JIRA_BASE_URL: ${JIRA_BASE_URL:-}
+      JIRA_PROJECT_KEY: ${JIRA_PROJECT_KEY:-}
+      JIRA_EMAIL: ${JIRA_EMAIL:-}
+      JIRA_API_TOKEN: ${JIRA_API_TOKEN:-}
+      JIRA_ISSUE_TYPE: ${JIRA_ISSUE_TYPE:-Task}
+      JIRA_ISSUE_TYPE_ID: ${JIRA_ISSUE_TYPE_ID:-}
+      JIRA_REPORTER_ACCOUNT_ID: ${JIRA_REPORTER_ACCOUNT_ID:-}
+      PHASE6_ENABLE_TRUSTED_MCP: ${PHASE6_ENABLE_TRUSTED_MCP:-false}
+      PHASE6_TRUSTED_MCP_LIVE: ${PHASE6_TRUSTED_MCP_LIVE:-false}
+    ports: ["127.0.0.1:8000:8000"]
     volumes:
       - ./backend:/app/backend
       - ./agents:/app/agents
+      - ./integrations:/app/integrations
+      - ./mcp_servers:/app/mcp_servers
+      - ./scripts:/app/scripts:ro
       - ./data:/app/data
     depends_on:
       postgres:
@@ -77,7 +94,7 @@ services:
     restart: unless-stopped
     environment:
       VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
-    ports: ["3000:5173"]
+    ports: ["127.0.0.1:3000:5173"]
     volumes:
       - ./frontend:/app
       - frontend_node_modules:/app/node_modules

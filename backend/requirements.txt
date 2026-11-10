@@ -12,3 +12,6 @@ httpx>=0.28,<1.0
 openai>=1.68,<3.0
 pypdf>=5.4,<7.0
 python-docx>=1.1,<2.0
+
+# Phase 5 stdio MCP server (v1 maintained API)
+mcp>=1.28,<2
